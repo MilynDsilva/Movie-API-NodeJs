@@ -2,9 +2,10 @@ const express = require('express');
 const routes = express.Router();
 const request = require('request');
 const axios = require('axios');
+const token = require('../token')
 
-const url = `https://imdb-api.com/en/API/Top250Movies/k_an9yo7t4`;
-const url2 = `https://imdb-api.com/en/API/ComingSoon/k_an9yo7t4`;
+const url = `https://imdb-api.com/en/API/Top250Movies/${token}`;
+const url2 = `https://imdb-api.com/en/API/ComingSoon/${token}`;
 
 const getTopMovie = async()=>{
     try {
