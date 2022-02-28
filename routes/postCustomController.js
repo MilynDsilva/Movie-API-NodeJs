@@ -10,8 +10,8 @@ routes.get('/', async(req, res) => {
     try {
         const getMoviesAPI = await axios.get(`http://localhost:9090/post/api3`)
         console.log(getMoviesAPI.data)
-        res.send(getMoviesAPI.data);
-        //res.render('news', { articles : newsAPI.data })
+        //res.send(getMoviesAPI.data);
+        res.render('Movies', { articles : getMoviesAPI.data })
     } catch (err) {
         // if(err.response) {
         //     res.render('news', { articles : null })
@@ -23,7 +23,8 @@ routes.get('/', async(req, res) => {
         //     console.log(err.requiest)
         // } else {
         //     res.render('news', { articles : null })
-        res.send(getMoviesAPI.data);
+        // res.send(getMoviesAPI.data);
+        res.render('Movies', { articles : getMoviesAPI.data })
         console.error('Error', err.message)
         // }
     } 

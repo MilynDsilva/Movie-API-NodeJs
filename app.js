@@ -2,16 +2,23 @@ const express = require('express');
 const app = express();
 require('dotenv').config();
 const mongoose = require('mongoose')
+const bodyParser = require('body-parser');
 const topMoviesController = require('./routes/topMoviesController');
 const comingSoonController = require('./routes/comingSoonController');
 const getMoviesFromDB = require('./routes/getMoviesFromDB');
 const getComingSoonFromDB = require('./routes/getComingSoonFromDB');
 const postCustomController = require('./routes/postCustomController')
+//const movieRoute = require('./view/Movies');
 
 mongoose.connect('mongodb://localhost:27017/movie-db');
 
+app.set('views','./view/');
+app.set('view engine','ejs');
 
+
+app.use(express.urlencoded({extended:true}));
 app.use(express.json());
+//app.use('/',movieRoute);
 app.use('/topmovie',topMoviesController);
 app.use('/comingsoon',comingSoonController);
 app.use('/getmovie',getMoviesFromDB);
