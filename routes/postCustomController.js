@@ -32,14 +32,14 @@ routes.post('/api',(req,res)=>{
 });
 
 routes.post('/api2',(req,res)=>{
-    var customSchema;
+    //var customSchema;
     req.body.forEach(function(newData) {
         var customSchema = new CustomSchema(newData);
         customSchema.save();
         console.log(customSchema);
         //res.send(customSchema);
       });
-      res.send(customSchema);
+      //res.send(customSchema);
     });
 
 
