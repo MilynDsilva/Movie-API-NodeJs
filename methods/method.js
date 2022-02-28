@@ -31,3 +31,4 @@ const getComingSoon = async()=>{
 
 module.exports.getTopMovie = getTopMovie;
 module.exports.getComingSoon = getComingSoon;
+module.exports.url = url;
