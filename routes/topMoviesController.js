@@ -11,7 +11,11 @@ routes.get('/api',async(request,response)=>{
     const getMovie = await getTopMovie();
     response.send(getMovie);
     const newData = new Movie({
-        items: getMovie
+        items: getMovie.items
+        // id: getMovie.items.id,
+        // title: getMovie.items.title,
+        // fullTitle: getMovie.items.fullTitle,
+        // contentRating: getMovie.items.contentRating
     })
       
     newData.save(function(err,result){
