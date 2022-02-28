@@ -6,6 +6,29 @@ const axios = require('axios');
 const { getComingSoon } = require('../methods/method');
 const CustomSchema = require('../models/customSchema');
 
+routes.get('/', async(req, res) => {
+    try {
+        const getMoviesAPI = await axios.get(`http://localhost:9090/post/api3`)
+        console.log(getMoviesAPI.data)
+        res.send(getMoviesAPI.data);
+        //res.render('news', { articles : newsAPI.data })
+    } catch (err) {
+        // if(err.response) {
+        //     res.render('news', { articles : null })
+        //     console.log(err.response.data)
+        //     console.log(err.response.status)
+        //     console.log(err.response.headers)
+        // } else if(err.requiest) {
+        //     res.render('news', { articles : null })
+        //     console.log(err.requiest)
+        // } else {
+        //     res.render('news', { articles : null })
+        res.send(getMoviesAPI.data);
+        console.error('Error', err.message)
+        // }
+    } 
+})
+
 routes.post('/api',(req,res)=>{
     const newData = new CustomSchema({
         id : req.body.id,
@@ -31,17 +54,15 @@ routes.post('/api',(req,res)=>{
     })
 });
 
-routes.post('/api2',(req,res)=>{
-    //var customSchema;
-    req.body.forEach(function(newData) {
-        var customSchema = new CustomSchema(newData);
-        customSchema.save();
-        console.log(customSchema);
-        //res.send(customSchema);
-      });
-      //res.send(customSchema);
-    });
+routes.get("/api3", async (request, response) => {
+    const users = await CustomSchema.find({});
 
+    try {
+      response.send(users);
+    } catch (error) {
+      response.status(500).send(error);
+    }
+  });
 
 
 module.exports = routes;
