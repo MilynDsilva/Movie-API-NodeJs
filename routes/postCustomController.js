@@ -31,40 +31,18 @@ routes.post('/api',(req,res)=>{
     })
 });
 
-routes.post('/api1',(req,res)=>{
-    const newData = new CustomSchema({
-        id : req.body.id,
-        rank: req.body.rank,
-        title: req.body.title,
-        fullTitle : req.body.fullTitle,
-        year: req.body.year,
-        image: req.body.image,
-        crew: req.body.crew,
-        imDbRating: req.body.imDbRating,
-        imDbRatingCount: req.body.imDbRatingCount
-    })
-
-    CustomSchema.create(newData, function (err, temps) {
-
-        if (err) {
-            console.log(err);
-            return res.send('Error saving');
-        }
-    
-        res.send(newData);
-    
+routes.post('/api2',(req,res)=>{
+    var customSchema;
+    req.body.forEach(function(newData) {
+        var customSchema = new CustomSchema(newData);
+        customSchema.save();
+        console.log(customSchema);
+        //res.send(customSchema);
+      });
+      res.send(customSchema);
     });
-      
-    newData.save(function(err,result){
-        if (err){
-            console.log(err);
-        }
-        else{
-            console.log(result)
-            res.send(newData);
-        }
-    })
-});
+
+
 
 module.exports = routes;
 
