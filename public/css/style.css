@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: #f6f6f6;
+}
+
+img { max-width: 100%; }
+h2 { font-size: 1.6rem; }
+
+
+
+.wrapper { padding: 0 1rem }
+
+.postCustomController {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    grid-gap: 2rem;
+
+
+        
+    
+}
+
+.news-single {
+    background-color: #fff;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 2rem;
+}

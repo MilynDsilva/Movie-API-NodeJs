@@ -4,21 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Top Movies</title>
-    <link rel="stylesheet" src="css/style.scss">
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
-</head>
+    <link rel="stylesheet" href="/css/styles.css">    
+    <link href="https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap" rel="stylesheet">
 <body>
     <header class="header">
-        <div class="header__logo">Movies</div>
+        <div class="title">Movies!</div>
     </header>
 
      <div class="wrapper">
         <div class="postCustomController">
-            <% if(articles != null) { %>
-            <% articles.forEach(function(article, index) { %>
-                    <img src="<%- article.image %>" alt="<%- article.title %>">
-                    <h2><%- article.title %></h2>
-                    <p><%- article.image %></p>
+            <% if(movieData != null) { %>
+            <% movieData.forEach(function(singleMovie, index) { %>
+                    <img src="<%- singleMovie.image %>" alt="<%- singleMovie.title %>">
+                    <h2><%- singleMovie.title %></h2>
+                    <p><%- singleMovie.id %></p>
                 </a>
             <% }) %>
             <% } else { %>
