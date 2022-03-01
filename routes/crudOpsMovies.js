@@ -5,6 +5,9 @@ const request = require('request');
 const axios = require('axios');
 const { getComingSoon } = require('../methods/method');
 const CrudSchema = require('../models/crudOpsSchema');
+const { route } = require('./topMoviesController');
+
+//Entry point to load ejs template localhost:9090/crud/
 
 routes.get('/', async(req, res) => {
     try {
@@ -16,6 +19,8 @@ routes.get('/', async(req, res) => {
         console.error('Error', err.message)
     } 
 })
+
+//To post single object to db
 
 routes.post('/single',(req,res)=>{
     const newData = new CrudSchema({
@@ -42,6 +47,8 @@ routes.post('/single',(req,res)=>{
     })
 });
 
+//To post multiple objects using array of objects to db
+
 routes.post('/multi',(req,res)=>{
     
     req.body.forEach(function(newData) {
@@ -53,6 +60,8 @@ routes.post('/multi',(req,res)=>{
      res.send("Saved");
     });
 
+//To fetch all the data saved in db
+
 routes.get("/getall", async (request, response) => {
     const users = await CrudSchema.find({});
 
@@ -63,5 +72,22 @@ routes.get("/getall", async (request, response) => {
     }
   });
 
+routes.delete('/data/:id',async (req,res)=>{
+   
+    const users = await CrudSchema.find({});
+
+    try {
+        const datafound = users.find((c)=>c.id === req.params.id);
+        if(!datafound) {
+            res.send('Movie id does not exist');
+            return;
+        }
+        const updatedData = await CrudSchema.deleteOne( {id: req.params.id});
+        res.send(updatedData);
+      } catch (error) {
+        res.status(500).send(error);
+      }
+    
+});;
 
 module.exports = routes;
