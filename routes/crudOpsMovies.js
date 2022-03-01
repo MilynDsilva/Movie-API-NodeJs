@@ -6,6 +6,7 @@ const axios = require('axios');
 const { getComingSoon } = require('../methods/method');
 const CrudSchema = require('../models/crudOpsSchema');
 const { route } = require('./topMoviesController');
+const { getTopMovie } = require('../methods/method');
 
 //Entry point to load ejs template localhost:9090/crud/
 
@@ -19,6 +20,22 @@ routes.get('/', async(req, res) => {
         console.error('Error', err.message)
     } 
 })
+
+//Pulls array of objects from 3rd party api and saves parsed objects in db
+
+routes.get('/pull',async (req,response)=>{
+    const getMovie = await getTopMovie();
+    const newData = getMovie.items;
+
+    newData.forEach((element) => {
+         //console.log(element);
+         var movie = new CrudSchema(element);
+         movie.save();
+         console.log(movie);
+    });
+    response.send("saved");
+
+    });
 
 //To post single object to db
 

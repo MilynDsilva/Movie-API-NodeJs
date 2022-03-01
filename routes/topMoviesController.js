@@ -39,19 +39,21 @@ routes.get('/api',async(request,response)=>{
     //  res.send("Saved");
     // });
 
-routes.get('/api1',async (req,response)=>{
-    const getMovie = await getTopMovie();
-    const newData = getMovie.items;
+// //Pulls array of objects from 3rd party api and saves parsed objects in db
 
-    newData.forEach((element) => {
-         //console.log(element);
-         var movie = new Movie(element);
-         movie.save();
-         console.log(movie);
-    });
-    response.send("saved");
+// routes.get('/api1',async (req,response)=>{
+//     const getMovie = await getTopMovie();
+//     const newData = getMovie.items;
 
-    });
+//     newData.forEach((element) => {
+//          //console.log(element);
+//          var movie = new Movie(element);
+//          movie.save();
+//          console.log(movie);
+//     });
+//     response.send("saved");
+
+//     });
 
 
 module.exports = routes;
