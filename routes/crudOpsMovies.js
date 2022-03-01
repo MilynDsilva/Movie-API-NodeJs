@@ -104,7 +104,7 @@ routes.put('/data/:id',async(req,res)=>{
             res.send('Movie id does not exist');
             return;
         }
-        const updatedDataOne = await CrudSchema.findAndUpdate( {title: req.body.title});
+        const updatedDataOne = await CrudSchema.findOneAndUpdate({title: req.body.title});
         console.log(updatedDataOne);
         res.send(updatedDataOne);
       } catch (error) {

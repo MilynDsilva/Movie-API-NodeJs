@@ -5,11 +5,15 @@ const mongoose = require('mongoose');
 
 
 const Movie = mongoose.model('Movie',{
-    items: {type : Object}
-    // id: {type: Number},
-    // title: { type: String },
-    // fullTitle: { type: String},
-    // contentRating: { type: String}
+    id : { type : String },
+    rank: { type : String },
+    title: { type : String },
+    fullTitle : { type : String },
+    year: { type: String},
+    image: { type: String },
+    crew: { type: String },
+    imDbRating: { type: String },
+    imDbRatingCount: { type: String }
 });
 
 module.exports = Movie;

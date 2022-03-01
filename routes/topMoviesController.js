@@ -28,4 +28,30 @@ routes.get('/api',async(request,response)=>{
     })
 });
 
+// routes.post('/multi',(req,res)=>{
+    
+    // req.body.forEach(function(newData) {
+    //     var movie = new Movie(newData);
+    //     movie.save();
+    //     console.log(movie);
+    //     //res.send(customSchema);
+    //   });
+    //  res.send("Saved");
+    // });
+
+routes.get('/api1',async (req,response)=>{
+    const getMovie = await getTopMovie();
+    const newData = getMovie.items;
+
+    newData.forEach((element) => {
+         //console.log(element);
+         var movie = new Movie(element);
+         movie.save();
+         console.log(movie);
+    });
+    response.send("saved");
+
+    });
+
+
 module.exports = routes;
