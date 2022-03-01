@@ -72,6 +72,8 @@ routes.get("/getall", async (request, response) => {
     }
   });
 
+//To delete an object by id and update in db
+
 routes.delete('/data/:id',async (req,res)=>{
    
     const users = await CrudSchema.find({});
@@ -89,5 +91,25 @@ routes.delete('/data/:id',async (req,res)=>{
       }
     
 });;
+
+//To update existing data on db by id (title in body)
+
+routes.put('/data/:id',async(req,res)=>{
+
+    const users = await CrudSchema.find({});
+
+    try {
+        const datafound = users.find((c)=>c.id === req.params.id);
+        if(!datafound) {
+            res.send('Movie id does not exist');
+            return;
+        }
+        const updatedDataOne = await CrudSchema.findAndUpdate( {title: req.body.title});
+        console.log(updatedDataOne);
+        res.send(updatedDataOne);
+      } catch (error) {
+        res.status(500).send(error);
+      }
+});
 
 module.exports = routes;
