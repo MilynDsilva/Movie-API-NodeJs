@@ -4,7 +4,7 @@ require('dotenv').config();
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser');
 const topMoviesController = require('./routes/topMoviesController');
-const comingSoonController = require('./routes/comingSoonController');
+const comingSoonController = require('./modules/movies/');
 const getMoviesFromDB = require('./routes/getMoviesFromDB');
 const getComingSoonFromDB = require('./routes/getComingSoonFromDB');
 const postCustomController = require('./routes/postCustomController')

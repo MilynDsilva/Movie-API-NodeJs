@@ -21,25 +21,7 @@ const { getTopMovie } = require('../methods/method');
 //     } 
 // });
 
-routes.get('/:page', (req, res, next) =>{
-    var perPage = 5
-    var page = req.params.page || 1
 
-    CrudSchema
-        .find({})
-        .skip((perPage * page) - perPage)
-        .limit(perPage)
-        .exec(function(err, dataOne) {
-            CrudSchema.count().exec(function(err, count) {
-                if (err) return next(err)
-                res.render('Movies', {
-                    movieData: dataOne,
-                    current: page,
-                    pages: Math.ceil(count / perPage)
-                })
-            })
-        })
-})
 
 //Pulls array of objects from 3rd party api and saves parsed objects in db
 
@@ -47,13 +29,19 @@ routes.get('/pull',async (req,response)=>{
     const getMovie = await getTopMovie();
     const newData = getMovie.items;
 
-    newData.forEach((element) => {
-         //console.log(element);
-         var movie = new CrudSchema(element);
-         movie.save();
-         console.log(movie);
-    });
-    response.send("saved");
+    try {
+        newData.forEach((element) => {
+            //console.log(element);
+            var movie = new CrudSchema(element);
+            movie.save();
+            console.log(movie);
+       });
+       response.send("saved");
+    } catch (error) {
+        console.log(error);
+    }
+
+    
 
     });
 
@@ -151,12 +139,12 @@ routes.get('/data/:id',async (req,res)=>{
 
 //To update existing data on db by id (title in body)
 
-routes.put('/data/:title',async(req,res)=>{
+routes.put('/data/:id',async(req,res)=>{
 
-    const users = await CrudSchema.find({});
+    const movie = await CrudSchema.find({});
 
     try {
-        const datafound = users.find((c)=>c.title === req.params.title);
+        const datafound = movie.find((c)=>c.id === req.params.id);
         if(!datafound) {
             res.send('Movie id does not exist');
             return;
@@ -168,6 +156,35 @@ routes.put('/data/:title',async(req,res)=>{
         res.status(500).send(error);
       }
 });
+
+routes.get('/:page', async (req, res, next) =>{
+    const perPage = 5
+    const page = req.params.page || 1
+    const skip = ((perPage * page) - perPage);
+
+    console.log(skip,page,perPage);
+    console.log()
+        try {
+            const data1 = await CrudSchema
+        .find({})
+        .skip(skip)
+        .limit(perPage)
+        const totalcount = await CrudSchema.count();
+
+        res.render('Movies', {
+            movieData: data1,
+            current: page,
+            pages: Math.ceil(totalcount / perPage)
+        })
+        } catch (error) {
+           console.log(error) 
+        }
+
+
+
+
+        
+})
 
 module.exports = routes;
 
