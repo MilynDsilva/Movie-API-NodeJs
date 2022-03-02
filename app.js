@@ -8,7 +8,8 @@ const comingSoonController = require('./routes/comingSoonController');
 const getMoviesFromDB = require('./routes/getMoviesFromDB');
 const getComingSoonFromDB = require('./routes/getComingSoonFromDB');
 const postCustomController = require('./routes/postCustomController')
-const crudOpsMovies = require('./routes/crudOpsMovies')
+const crudOpsMovies = require('./routes/crudOpsMovies');
+const Movie = require('./models/movieSchema');
 //const movieRoute = require('./view/Movies');
 
 mongoose.connect('mongodb://localhost:27017/movie-db');
@@ -27,6 +28,8 @@ app.use('/getmovie',getMoviesFromDB);
 app.use('/getcomingsoon',getComingSoonFromDB);
 app.use('/post',postCustomController);
 app.use('/crud',crudOpsMovies);
+
+
 
 const port = process.env.PORT || 9090;
 app.listen(port,()=>{

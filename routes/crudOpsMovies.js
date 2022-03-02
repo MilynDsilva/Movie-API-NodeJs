@@ -10,15 +10,35 @@ const { getTopMovie } = require('../methods/method');
 
 //Entry point to load ejs template localhost:9090/crud/
 
-routes.get('/', async(req, res) => {
-    try {
-        const getallMovies = await axios.get(`http://localhost:9090/crud/getall`)
-        console.log(getallMovies.data)
-        res.render('Movies', { movieData : getallMovies.data })
-    } catch (err) {
-        res.render('Movies', { movieData : getallMovies.data })
-        console.error('Error', err.message)
-    } 
+// routes.get('/', async(req, res) => {
+//     try {
+//         const getallMovies = await axios.get(`http://localhost:9090/crud/getall`)
+//         console.log(getallMovies.data)
+//         res.render('Movies', { movieData : getallMovies.data })
+//     } catch (err) {
+//         res.render('Movies', { movieData : getallMovies.data })
+//         console.error('Error', err.message)
+//     } 
+// })
+
+routes.get('/:page', function(req, res, next) {
+    var perPage = 5
+    var page = req.params.page || 1
+
+    CrudSchema
+        .find({})
+        .skip((perPage * page) - perPage)
+        .limit(perPage)
+        .exec(function(err, data) {
+            CrudSchema.count().exec(function(err, count) {
+                if (err) return next(err)
+                res.render('Movies', {
+                    movieData: data,
+                    current: page,
+                    pages: Math.ceil(count / perPage)
+                })
+            })
+        })
 })
 
 //Pulls array of objects from 3rd party api and saves parsed objects in db
