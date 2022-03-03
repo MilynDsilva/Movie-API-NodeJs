@@ -10,6 +10,7 @@ const getComingSoonFromDB = require('./routes/getComingSoonFromDB');
 const postCustomController = require('./routes/postCustomController')
 const crudOpsMovies = require('./routes/crudOpsMovies');
 const Movie = require('./models/movieSchema');
+const crudOpsmovie = require('./modules/crudOperations/index');
 //const movieRoute = require('./view/Movies');
 
 mongoose.connect('mongodb://localhost:27017/movie-db');
@@ -28,6 +29,7 @@ app.use('/getmovie',getMoviesFromDB);
 app.use('/getcomingsoon',getComingSoonFromDB);
 app.use('/post',postCustomController);
 app.use('/crud',crudOpsMovies);
+app.use('/crud1',crudOpsmovie);
 
 
 

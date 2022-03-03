@@ -19,4 +19,4 @@ async function saveMovies(comingSoonMovies){
     }
     
 }
-module.exports = { saveMovies};
+module.exports = { saveMovies };
