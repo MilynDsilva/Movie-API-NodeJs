@@ -6,7 +6,6 @@ const axios = require('axios');
 const CrudSchema = require('../../models/crudOpsSchema');
 
 
-
 //Pulls array of objects from 3rd party api and saves parsed objects in db
 
 async function saveTop250MoviesToDB(getMovies){
@@ -24,5 +23,14 @@ async function saveTop250MoviesToDB(getMovies){
             console.log(error);
     }
 };
+
+
+async function saveSingleMovie() {
+    try {
+        
+    } catch (error) {
+        
+    }
+}
 
 module.exports = { saveTop250MoviesToDB };
