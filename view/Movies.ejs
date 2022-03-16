@@ -6,13 +6,14 @@
     <title>Top Movies</title>
     <link rel="stylesheet" href="/css/styles.css">    
     <link href="https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap" rel="stylesheet">
+</head>
 <body>
     <header class="header">
         <div class="title">Movies</div>
     </header>
 
-     <div class="wrapper">
-        <div class="postCustomController">
+     <div class="wrapper1">
+        <div class="mvi">
             <% if(movieData != null) { %>
             
                 
@@ -26,7 +27,7 @@
             <% } else { %>
                 No posts found.
             <% } %>
-        </div>
+        
         <% if (pages > 0) { %>
             <ul class="pagination text-center">
                 <% if (current == 1) { %>
@@ -57,5 +58,6 @@
             </ul>
         <% } %>
     </div>
+</div>
  </body>
 </html>  

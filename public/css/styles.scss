@@ -1,12 +1,8 @@
+
 body {
     margin: 0;
     font-family: 'Source Sans Pro', sans-serif;
     background-color: #f6f6f6;
-    display: grid;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    color: #fff;
     
 }
 .title{
@@ -20,19 +16,32 @@ color: slateblue;}
 
 .header {
     display: flex;
-    justify-content:center;
+    justify-content: space-between;
     align-items: center;
     padding: 10px;
     color: #fff;
-    background-color:rosybrown;
+    background-color: #10555A;
     margin-bottom: 10px;
-    
+
+    &__search {
+        input[type=text] {
+            padding: 6px;
+            border: none;
+        }
+
+        input[type=submit] {
+            float: right;
+            padding: 6px 10px;
+            border: none;
+            cursor: pointer;
+        }
+    }
 }
+  
 
-.wrapper { padding: 0 1rem ;
-    background-color: #f6f6f6;}
+.wrapper { padding: 0 1rem }
 
-.postCustomController {
+.mvi {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
     grid-gap: 2rem;
