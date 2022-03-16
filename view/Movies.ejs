@@ -17,7 +17,7 @@
             
                 
             <% movieData.forEach(function(singleMovie, index) { %>
-            <a href="/<%- singleMovie.id %>" class="movies__card">
+            <a href="/crud/movie/<%- singleMovie.id %>" class="movies__card">
                     <img src="<%- singleMovie.image %>" alt="<%- singleMovie.title %>">
                     <h2><%- singleMovie.title %></h2>
                     <p><%- singleMovie.id %></p>

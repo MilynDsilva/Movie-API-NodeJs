@@ -157,6 +157,48 @@ routes.put('/data/:id',async(req,res)=>{
       }
 });
 
+routes.get('/movie/:id', async (req, res) =>{
+    //let movieID = req.params.id;
+
+    const users = await CrudSchema.find({});
+
+    try {
+        const datafound = users.find((c)=>c.id === req.params.id);
+        if(!datafound) {
+            res.send('Movie id does not exist');
+            return;
+        }
+        const updatedData = await CrudSchema.findOne( {id: req.params.id});
+        //res.send(updatedData);
+        res.render('SingleMovie', {
+            movieData: updatedData
+        })
+      } catch (error) {
+        console.log(error) 
+      }    
+})
+// routes.get('/movie/:id', async(req, res) => {
+//     let articleID = req.params.id
+
+//     try {
+//         const newsAPI = await axios.get(`https://raddy.co.uk/wp-json/wp/v2/posts/${articleID}`)
+//         res.render('SingleMovie', { article : newsAPI.data })
+//     } catch (err) {
+//         if(err.response) {
+//             res.render('SingleMovie', { article : null })
+//             console.log(err.response.data)
+//             console.log(err.response.status)
+//             console.log(err.response.headers)
+//         } else if(err.requiest) {
+//             res.render('SingleMovie', { article : null })
+//             console.log(err.requiest)
+//         } else {
+//             res.render('SingleMovie', { article : null })
+//             console.error('Error', err.message)
+//         }
+//     } 
+// })
+
 routes.get('/:page', async (req, res, next) =>{
     const perPage = 5
     const page = req.params.page || 1

@@ -3,25 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Node.js News</title> 
-    <link rel="stylesheet" href="/css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
-</head>
+    <title>Top Movies</title>
+    <link rel="stylesheet" href="/css/styles.css">    
+    <link href="https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap" rel="stylesheet">
 <body>
     <header class="header">
-        <div class="header__logo">Single Movie</div>
+        <div class="title">Movies</div>
     </header>
 
     <div class="wrapper">
         <div class="news-single">
-                <a href="/r">&larr;- Back</a>
-                <% if(singleMovie != null) { %>
-                    <h2><%- singleMovie.title.rendered %></h2>
-                    <p><%- singleMovie.id.rendered %></p>
+                <a href="/crud/1">&larr;- Back
+                <% if(movieData != null) { %>
+                    <h2><%- movieData.title.rendered %></h2>
+                    <p><%- movieData.id.rendered %></p>
+                    <img src="<%- movieData.image %>" alt="<%- movieData.title %>">
+                    <h2><%- movieData.title %></h2>
+                    <p><%- movieData.id %></p>
                 <% } else { %>
                     No posts found.
                 <% } %>
+            </a>
         </div>
     </div>  
-</body>
-</html> 
+ </body>
+</html>  
