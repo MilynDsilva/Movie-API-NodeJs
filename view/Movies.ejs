@@ -14,7 +14,10 @@
      <div class="wrapper">
         <div class="postCustomController">
             <% if(movieData != null) { %>
+            
+                
             <% movieData.forEach(function(singleMovie, index) { %>
+            <a href="/<%- singleMovie.id %>" class="movies__card">
                     <img src="<%- singleMovie.image %>" alt="<%- singleMovie.title %>">
                     <h2><%- singleMovie.title %></h2>
                     <p><%- singleMovie.id %></p>

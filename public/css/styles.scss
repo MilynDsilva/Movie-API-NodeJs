@@ -50,6 +50,17 @@ color: slateblue;}
     }
 }
 
+.movies__card {
+    text-decoration: none;
+    color: #080808;
+    background-color: #fff;
+    padding: 20px;
+  }
+  
+  .movies__card:hover {
+    -webkit-box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23);
+            box-shadow: 0 3px 3px rgba(0, 0, 0, 0.16), 0 3px 3px rgba(0, 0, 0, 0.23);
+  }
 // .postCustomController    {
 //     background-color: #fff;
 //     max-width: 1300px;
