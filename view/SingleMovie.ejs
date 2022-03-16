@@ -13,17 +13,21 @@
 
     <div class="wrapper">
         <div class="news-single">
-                <a href="/crud/1">&larr;- Back
+                <a href="/crud/1">&larr;- Back</a>
                 <% if(movieData != null) { %>
                     <h2><%- movieData.title.rendered %></h2>
                     <p><%- movieData.id.rendered %></p>
                     <img src="<%- movieData.image %>" alt="<%- movieData.title %>">
                     <h2><%- movieData.title %></h2>
-                    <p><%- movieData.id %></p>
+                    <p>Movie id: <%- movieData.id %></p>
+                    <p>Year: <%- movieData.year %></p>
+                    <p>Crew: <%- movieData.crew %></p>
+                    <p>Rating: <%- movieData.imDbRating %></p>
+                    <p>Rating Count: <%- movieData.imDbRatingCount %></p>
                 <% } else { %>
                     No posts found.
                 <% } %>
-            </a>
+            
         </div>
     </div>  
  </body>

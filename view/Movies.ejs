@@ -20,44 +20,48 @@
             <% movieData.forEach(function(singleMovie, index) { %>
             <a href="/crud/movie/<%- singleMovie.id %>" class="movies__card">
                     <img src="<%- singleMovie.image %>" alt="<%- singleMovie.title %>">
-                    <h2><%- singleMovie.title %></h2>
-                    <p><%- singleMovie.id %></p>
+                    <h2>Movie Title: <%- singleMovie.title %></h2>
+                    <p>Rating: <%- singleMovie.imDbRating %></p>
                 </a>
             <% }) %>
             <% } else { %>
                 No posts found.
             <% } %>
         
-        <% if (pages > 0) { %>
-            <ul class="pagination text-center">
-                <% if (current == 1) { %>
-                    <li class="disabled"><a>First</a></li>
-                <% } else { %>
-                    <li><a href="/crud/1">First</a></li>
-                <% } %>
-                <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
-                <% if (i !== 1) { %>
-                    <li class="disabled"><a>...</a></li>
-                <% } %>
-                <%var pages = 15 %>
-                <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
-                    <% if (i == current) { %>
-                        <li class="active"><a><%= i %></a></li>
-                    <% } else { %>
-                        <li><a href="/crud/<%= i %>"><%= i %></a></li>
-                    <% } %>
-                    <% if (i == Number(current) + 4 && i < pages) { %>
-                        <li class="disabled"><a>...</a></li>
-                    <% } %>
-                <% } %>
-                <% if (current == pages) { %>
-                    <li class="disabled"><a>Last</a></li>
-                <% } else { %>
-                    <li><a href="/crud/<%= pages %>">Last</a></li>
-                <% } %>
-            </ul>
-        <% } %>
+        
     </div>
 </div>
+<footer class="footer">
+
+    <% if (pages > 0) { %>
+        <ul class="pagination">
+            <% if (current == 1) { %>
+                <li class="disabled"><a>First</a></li>
+            <% } else { %>
+                <li><a href="/crud/1">First</a></li>
+            <% } %>
+            <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+            <% if (i !== 1) { %>
+                <li class="disabled"><a>...</a></li>
+            <% } %>
+            <%var pages = 15 %>
+            <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+                <% if (i == current) { %>
+                    <li class="active"><a><%= i %></a></li>
+                <% } else { %>
+                    <li><a href="/crud/<%= i %>"><%= i %></a></li>
+                <% } %>
+                <% if (i == Number(current) + 4 && i < pages) { %>
+                    <li class="disabled"><a>...</a></li>
+                <% } %>
+            <% } %>
+            <% if (current == pages) { %>
+                <li class="disabled"><a>Last</a></li>
+            <% } else { %>
+                <li><a href="/crud/<%= pages %>">Last</a></li>
+            <% } %>
+        </ul>
+    <% } %>
+</footer>
  </body>
 </html>  
