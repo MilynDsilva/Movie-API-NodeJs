@@ -12,8 +12,8 @@
     </header>
 
     <div class="wrapper">
-        <div class="news-single">
-                <a href="/crud/1">&larr;- Back</a>
+        <div class="mvii">
+            <button onclick="history.back()" class="btn">Back</button>
                 <% if(movieData != null) { %>
                     <h2><%- movieData.title.rendered %></h2>
                     <p><%- movieData.id.rendered %></p>
