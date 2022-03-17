@@ -1,0 +1,152 @@
+{
+	"info": {
+		"_postman_id": "3956dedf-6d31-4738-9e06-caea28d65e71",
+		"name": "MOVIE-DB CRUD",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1 obj save",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n            \"id\": \"66\",\r\n            \"rank\": \"1\",\r\n            \"title\": \"test\",\r\n            \"fullTitle\": \"The Shawshank Redemption (1994)\",\r\n            \"year\": \"1994\",\r\n            \"image\": \"https://imdb-api.com/images/original/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_Ratio0.6716_AL_.jpg\",\r\n            \"crew\": \"Frank Darabont (dir.), Tim Robbins, Morgan Freeman\",\r\n            \"imDbRating\": \"9.2\",\r\n            \"imDbRatingCount\": \"2550879\"\r\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9090/crud/single",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"crud",
+						"single"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "multi obj save",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n            \"id\": \"tt0068646\",\r\n            \"rank\": \"2\",\r\n            \"title\": \"The Godfather\",\r\n            \"fullTitle\": \"The Godfather (1972)\",\r\n            \"year\": \"1972\",\r\n            \"image\": \"https://imdb-api.com/images/original/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_Ratio0.7015_AL_.jpg\",\r\n            \"crew\": \"Francis Ford Coppola (dir.), Marlon Brando, Al Pacino\",\r\n            \"imDbRating\": \"9.1\",\r\n            \"imDbRatingCount\": \"1754988\"\r\n        },\r\n        {\r\n            \"id\": \"tt0071562\",\r\n            \"rank\": \"3\",\r\n            \"title\": \"The Godfather: Part II\",\r\n            \"fullTitle\": \"The Godfather: Part II (1974)\",\r\n            \"year\": \"1974\",\r\n            \"image\": \"https://imdb-api.com/images/original/MV5BMWMwMGQzZTItY2JlNC00OWZiLWIyMDctNDk2ZDQ2YjRjMWQ0XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_Ratio0.7015_AL_.jpg\",\r\n            \"crew\": \"Francis Ford Coppola (dir.), Al Pacino, Robert De Niro\",\r\n            \"imDbRating\": \"9.0\",\r\n            \"imDbRatingCount\": \"1216568\"\r\n        }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9090/crud/multi",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"crud",
+						"multi"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all saved data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9090/crud/getall",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"crud",
+						"getall"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get single data by id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:9090/crud/data/10",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"crud",
+						"data",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update data with id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Story Toys1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:9090/crud/data/tt0108052",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"crud",
+						"data",
+						"tt0108052"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "pulldata from 3rd party api",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:9090/crud/pullmovies",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"crud",
+						"pullmovies"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
